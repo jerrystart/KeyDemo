@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="TitleBar" parent="android:Theme.Light">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@color/main_bg</item>
+        <item name="android:windowTitleSize">@dimen/actionBarHeight</item>
+        <item name="android:windowTitleBackgroundStyle">@color/actionbar_bg</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_to_right</item>
+        <item name="android:taskOpenEnterAnimation">@anim/slide_in_from_right</item>
+        <item name="android:taskOpenExitAnimation">@anim/slide_out_to_left</item>
+        <item name="android:taskCloseEnterAnimation">@anim/slide_in_from_left</item>
+        <item name="android:taskCloseExitAnimation">@anim/slide_out_to_right</item>
+    </style>
+</resources>

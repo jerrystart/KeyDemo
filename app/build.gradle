@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+def baseGradleScript = file("../base.gradle")
+if (baseGradleScript.exists()) {
+    apply from: baseGradleScript
+} else {
+    println "exception: not found  base.gradle "
+    return
+}
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.example.keydemo"
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode computeVersionCode()
+        versionName computeVersionName()
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+def computeVersionName() {
+    return "2.5"
+}
+
+def computeVersionCode() {
+    def process = "git rev-list --branches --count".execute()
+    return 1
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+}
