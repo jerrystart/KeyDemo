@@ -12,10 +12,19 @@ android {
         versionCode computeVersionCode()
         versionName computeVersionName()
         buildConfigField "String", "GIT_REVISION", "\"${getGitVersion()}\""
+        resValue 'string', 'app_name', 'Demo'
     }
     lintOptions {//（手动添加）
         abortOnError false//程序在buid的时候，会执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉
         disable 'MissingTranslation'
+    }
+    signingConfigs {//(手动添加)
+        release {//设置打正式包签名属性
+            storeFile file("/Users/demo.KeyStore")
+            storePassword "demokey"
+            keyAlias "demokey"
+            keyPassword "demokey"
+        }
     }
     buildTypes {
         release {
@@ -25,6 +34,14 @@ android {
         }
     }
     initProductFlavors()
+    productFlavors.all { flavor ->
+        if ("aaaBuildForTest".equals(flavor.name)) {
+            flavor.addBuildConfigField(AndroidBuilder.createClassField("String", "CHANNEL", '\"aaaBuildForTest\"'))
+            flavor.addResValue(AndroidBuilder.createClassField('string', 'app_name', 'Demo_测试 '));
+        } else {
+
+        }
+    }
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
             if (variant.buildType.name.equals('release')) {

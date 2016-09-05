@@ -10,9 +10,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/TitleBar">
-        <activity
-            android:name="com.app.demo.SplashActivity"
-            android:label="splash">
+        <activity android:name="com.app.demo.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
