@@ -14,5 +14,6 @@ public class SplashActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         ToastUtils.toast("one");
         ToastUtils.toast("one");
+        ToastUtils.toast("one");
     }
 }
