@@ -7,22 +7,63 @@ if (baseGradleScript.exists()) {
     return
 }
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
     defaultConfig {
         applicationId "com.example.keydemo"
-        minSdkVersion 14
-        targetSdkVersion 23
         versionCode computeVersionCode()
         versionName computeVersionName()
+        buildConfigField "String", "GIT_REVISION", "\"${getGitVersion()}\""
+    }
+    lintOptions {//（手动添加）
+        abortOnError false//程序在buid的时候，会执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉
+        disable 'MissingTranslation'
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled false // 替代的方式//是否执行代码混淆
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    initProductFlavors()
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            if (variant.buildType.name.equals('release')) {
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "Demo_${variant.productFlavors[0].name}_v${android.defaultConfig.versionName}_${getGitVersion()}.apk"
+                    def outDir = new File(rootProject.projectDir.parentFile, "${releaseTime()}")
+                    output.outputFile = new File(outDir, fileName)
+                }
+            }
+
+        }
+    }
+}
+
+def initProductFlavors() {
+    def sourceFile = new File(rootProject.projectDir, '../source.txt')
+    if (sourceFile.exists()) {
+        println '>>> source file is exist'
+        sourceFile.eachLine { line ->
+            if (line.startsWith('source') || line.size() == 0) {
+                return
+            }
+            def source = line.trim().toString();
+            android.productFlavors.create(source)
+        }
+    } else {
+        android.productFlavors.create('BuildForTest')
+        println '>>> source file is not exist'
+    }
+
+}
+
+def getGitVersion() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+def releaseTime() {
+    return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+8"))
 }
 
 def computeVersionName() {
@@ -31,7 +72,7 @@ def computeVersionName() {
 
 def computeVersionCode() {
     def process = "git rev-list --branches --count".execute()
-    return 1
+    return process.text.toInteger()
 }
 
 dependencies {
