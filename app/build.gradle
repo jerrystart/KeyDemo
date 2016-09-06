@@ -1,3 +1,5 @@
+import com.android.builder.core.AndroidBuilder
+
 apply plugin: 'com.android.application'
 def baseGradleScript = file("../base.gradle")
 if (baseGradleScript.exists()) {
@@ -31,11 +33,13 @@ android {
             minifyEnabled false // 替代的方式//是否执行代码混淆
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release//打正式包时运行签名文件 手动添加)
         }
     }
     initProductFlavors()
     productFlavors.all { flavor ->
         if ("aaaBuildForTest".equals(flavor.name)) {
+            //第三方key
             flavor.addBuildConfigField(AndroidBuilder.createClassField("String", "CHANNEL", '\"aaaBuildForTest\"'))
             flavor.addResValue(AndroidBuilder.createClassField('string', 'app_name', 'Demo_测试 '));
         } else {
@@ -47,7 +51,7 @@ android {
             if (variant.buildType.name.equals('release')) {
                 def outputFile = output.outputFile
                 if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def fileName = "Demo_${variant.productFlavors[0].name}_v${android.defaultConfig.versionName}_${getGitVersion()}.apk"
+                    def fileName = "DEMO_${variant.productFlavors[0].name}_v${android.defaultConfig.versionName}_${getGitVersion()}.apk"
                     def outDir = new File(rootProject.projectDir.parentFile, "${releaseTime()}")
                     output.outputFile = new File(outDir, fileName)
                 }
@@ -58,7 +62,7 @@ android {
 }
 
 def initProductFlavors() {
-    def sourceFile = new File(rootProject.projectDir, '../source.txt')
+    def sourceFile = new File(rootProject.projectDir, '../source.txt ')
     if (sourceFile.exists()) {
         println '>>> source file is exist'
         sourceFile.eachLine { line ->
@@ -69,7 +73,7 @@ def initProductFlavors() {
             android.productFlavors.create(source)
         }
     } else {
-        android.productFlavors.create('BuildForTest')
+        android.productFlavors.create('aaaBuildForTest')
         println '>>> source file is not exist'
     }
 
