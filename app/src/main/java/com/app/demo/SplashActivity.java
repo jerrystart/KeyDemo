@@ -1,11 +1,11 @@
 package com.app.demo;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
+import com.app.demo.base.BaseActivity;
 import com.example.keydemo.R;
 
-public class SplashActivity extends FragmentActivity {
+public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

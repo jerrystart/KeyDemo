@@ -62,7 +62,7 @@ android {
 }
 
 def initProductFlavors() {
-    def sourceFile = new File(rootProject.projectDir, '../source.txt ')
+    def sourceFile = new File(rootProject.projectDir, '../source.txt')
     if (sourceFile.exists()) {
         println '>>> source file is exist'
         sourceFile.eachLine { line ->
