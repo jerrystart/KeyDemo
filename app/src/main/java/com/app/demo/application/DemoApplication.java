@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.res.Configuration;
 import android.util.Log;
 
+import com.app.demo.utils.LogUtils;
+
 /**
  * TODO:功能说明
  *
@@ -26,6 +28,12 @@ public class DemoApplication extends Application {
         Log.e("DemoApplication>>>", "onCreate");
         //应用创建的时候调用
         super.onCreate();
+        if ((getApplicationInfo().flags & 2) != 0) {
+            // ApplicationInfo.FLAG_DEBUGGABLE
+            LogUtils.LEVEL = Integer.MIN_VALUE;
+        } else {
+            LogUtils.LEVEL = Integer.MAX_VALUE;
+        }
     }
 
     @Override
@@ -54,4 +62,6 @@ public class DemoApplication extends Application {
         Log.e("DemoApplication>>>", "onConfigurationChanged");
         super.onConfigurationChanged(newConfig);
     }
+
+
 }
