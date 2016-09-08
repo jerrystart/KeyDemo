@@ -1,5 +1,6 @@
 package com.app.demo.application;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.res.Configuration;
 import android.util.Log;
@@ -61,6 +62,30 @@ public class DemoApplication extends Application {
     public void onConfigurationChanged(Configuration newConfig) {
         Log.e("DemoApplication>>>", "onConfigurationChanged");
         super.onConfigurationChanged(newConfig);
+    }
+
+    public void activityOncreat(Activity activity) {
+        LogUtils.d("activityOncreat>>>");
+    }
+
+    public void activityOnstart(Activity activity) {
+        LogUtils.d("activityOnstart>>>");
+    }
+
+    public void activityOnresum(Activity activity) {
+        LogUtils.d("activityOnresum>>>");
+    }
+
+    public void activityOnpause(Activity activity) {
+        LogUtils.d("activityOnpause>>>");
+    }
+
+    public void activityOnstop(Activity activity) {
+        LogUtils.d("activityOnstop>>>");
+    }
+
+    public void activityOndestory(Activity activity) {
+        LogUtils.d("activityOndestory>>>");
     }
 
 

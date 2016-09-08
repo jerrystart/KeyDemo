@@ -4,9 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/actionbar_bg"
-        android:text="123" />
+        android:layout_height="match_parent"
+        android:background="@mipmap/ic_launcher" />
 </LinearLayout>
