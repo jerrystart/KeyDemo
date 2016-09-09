@@ -3,6 +3,7 @@ package com.app.demo.base;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.app.demo.annonation.InjectUtils;
 import com.app.demo.application.DemoApplication;
 import com.app.demo.utils.LogUtils;
 
@@ -20,8 +21,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         DemoApplication.instance().activityOncreat(this);
         onSetConTentView();
-
-        LogUtils.toast(this, getClass().getName());
+        InjectUtils.inject(this);
     }
 
     @Override
@@ -88,7 +88,8 @@ public abstract class BaseActivity extends FragmentActivity {
 
     protected abstract void onSetConTentView();
 
-    public void setupView() {
+    protected void setupView() {
 
     }
+
 }
