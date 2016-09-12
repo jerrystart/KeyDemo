@@ -3,6 +3,7 @@ package com.app.demo.base;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
+import com.app.demo.actionBar.DMActionBarHelper;
 import com.app.demo.annonation.InjectUtils;
 import com.app.demo.application.DemoApplication;
 import com.app.demo.utils.LogUtils;
@@ -16,12 +17,30 @@ import de.greenrobot.event.EventBus;
  * @date: 2016-08-11 16:39
  */
 public abstract class BaseActivity extends FragmentActivity {
+    private final DMActionBarHelper dmActionBarHelper = DMActionBarHelper.createInstace(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DemoApplication.instance().activityOncreat(this);
+        dmActionBarHelper.onCreate(savedInstanceState);
         onSetConTentView();
+        dmActionBarHelper.onSetView();
         InjectUtils.inject(this);
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+        if (dmActionBarHelper.getActionBar() != null) {
+            dmActionBarHelper.getActionBar().setTitle(title.toString());
+        }
+    }
+
+    public void setTitle(String title) {
+        if (dmActionBarHelper.getActionBar() != null) {
+            dmActionBarHelper.getActionBar().setTitle(title);
+        }
     }
 
     @Override

@@ -5,7 +5,8 @@
     android:layout_height="match_parent">
 
     <ImageView
+        android:id="@+id/splash_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/ic_launcher" />
+        android:background="@mipmap/icon_login_bg" />
 </LinearLayout>

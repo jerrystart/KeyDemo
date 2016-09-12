@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.app.demo.actionBar.DMActionBar xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:id="@+id/demo_actionbar"
+    android:background="@color/actionbar_bg">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -10,13 +11,14 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
+                android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:singleLine="true"
                 android:ellipsize="end"
@@ -31,33 +33,48 @@
                 android:layout_below="@id/title"
                 android:singleLine="true"
                 android:ellipsize="end"
+                android:textSize="14sp"
                 android:text="subTitle" />
         </RelativeLayout>
 
         <FrameLayout
+            android:id="@+id/custom_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone" />
     </FrameLayout>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingRight="8dp"
-        android:paddingLeft="8dp"
-        android:background="@null"
-        android:src="@mipmap/ic_launcher" />
-
     <LinearLayout
+        android:id="@+id/left_custom_layout"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:src="@mipmap/ds_action_bar_back_s" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right_custom_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingRight="16dp"
         android:layout_gravity="right">
 
         <TextView
+            android:id="@+id/custom_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="123" />
+            android:layout_gravity="center"
+            android:textSize="14sp"
+            android:text="button" />
 
     </LinearLayout>
 </com.app.demo.actionBar.DMActionBar>
