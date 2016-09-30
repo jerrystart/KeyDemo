@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_get_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="获取数据" />
+
+    <TextView
+        android:id="@+id/txt_get_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="请获取数据" />
+
+    <Button
+        android:id="@+id/btn_put_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="提交数据" />
+
+    <TextView
+        android:id="@+id/txt_put_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="请提交数据" />
+
+    <Button
+        android:id="@+id/btn_change_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="修改数据" />
+
+    <TextView
+        android:id="@+id/txt_change_info"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="请修改数据" />
+
+
+</LinearLayout>

@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="3" />
+
     <ImageView
-        android:id="@+id/splash_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         android:background="@mipmap/splash" />
-
-    <TextView
-        android:id="@+id/app_info"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

@@ -74,7 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="14sp"
-            android:text="button" />
+            android:text="button"
+            android:visibility="gone" />
 
     </LinearLayout>
 </com.app.demo.actionBar.DMActionBar>

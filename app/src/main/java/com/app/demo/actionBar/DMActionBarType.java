@@ -7,5 +7,5 @@ package com.app.demo.actionBar;
  * @date: 2016-09-11 18:41
  */
 public enum DMActionBarType {
-    DSACTIONBAR, DSCONTENT, NONE
+    SHOW, NONE, DMCONTENT
 }

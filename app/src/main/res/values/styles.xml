@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="TitleBar" parent="android:Theme.Light">
+    <style name="appTheme" parent="android:Theme.Light">
         <!-- Customize your theme here. -->
         <item name="android:windowBackground">@color/main_bg</item>
         <item name="android:windowTitleSize">@dimen/actionBarHeight</item>

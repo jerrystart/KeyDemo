@@ -23,10 +23,16 @@ public class DMActionBarHelperWithActivity extends DMActionBarHelper {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        mBaseActivity.getWindow().requestFeature(Window.FEATURE_CUSTOM_TITLE);
-        mBaseActivity.setContentView(new ViewStub(mBaseActivity));
-        mBaseActivity.getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.dm_actionbar);
-        mDMActionBar = (DMActionBar) mBaseActivity.findViewById(R.id.demo_actionbar);
+        if (mBaseActivity.getActionBarType() == DMActionBarType.SHOW || mBaseActivity.getActionBarType() == DMActionBarType.DMCONTENT) {
+            mBaseActivity.getWindow().requestFeature(Window.FEATURE_CUSTOM_TITLE);
+            mBaseActivity.setContentView(new ViewStub(mBaseActivity));
+            mBaseActivity.getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.dm_actionbar);
+            mDMActionBar = (DMActionBar) mBaseActivity.findViewById(R.id.demo_actionbar);
+        } else {
+            mBaseActivity.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+            mBaseActivity.setContentView(new ViewStub(mBaseActivity));
+            mDMActionBar = (DMActionBar) LayoutInflater.from(mBaseActivity).inflate(R.layout.dm_actionbar, null, false);
+        }
     }
 
     @Override

@@ -44,7 +44,7 @@ public class LogUtils {
      */
     public static final int ERROR = android.util.Log.ERROR;
 
-    public static String TAG_DEFAULT = "SalonApp";
+    public static String TAG_DEFAULT = "DMApp";
 
     /**
      * 检查当前是否需要输出对应的level。

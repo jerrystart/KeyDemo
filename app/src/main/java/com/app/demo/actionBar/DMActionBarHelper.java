@@ -39,6 +39,7 @@ public abstract class DMActionBarHelper {
 
             // remove all views from titleContainer
             ((ViewGroup) mBaseActivity.getWindow().findViewById(titleContainerId)).setVisibility(View.VISIBLE);
+            mDMActionBar.setVisibility(View.VISIBLE);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,6 +54,7 @@ public abstract class DMActionBarHelper {
 
             // remove all views from titleContainer
             ((ViewGroup) mBaseActivity.getWindow().findViewById(titleContainerId)).setVisibility(View.GONE);
+            mDMActionBar.setVisibility(View.GONE);
         } catch (Exception ex) {
             // whatever you want to do here..
         }

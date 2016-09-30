@@ -88,4 +88,8 @@ public class DMActionBar extends FrameLayout {
             backBtn.setOnClickListener(listener);
         }
     }
+
+    public void removeAllAction() {
+
+    }
 }
