@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.keydemo.R;
@@ -16,7 +17,8 @@ import com.example.keydemo.R;
  * @author: hejie
  * @date: 2016-09-09 10:39
  */
-public class DMActionBar extends FrameLayout {
+public class DMActionBar extends LinearLayout {
+    private RelativeLayout titleContainer;
     private TextView titleView;
     private TextView subTitleView;
     private FrameLayout customTitle;
@@ -24,6 +26,7 @@ public class DMActionBar extends FrameLayout {
     private ImageButton backBtn;
     private LinearLayout rightCustomLayout;
     private TextView customBtn;
+    private FrameLayout dmMain;
 
     public DMActionBar(Context context) {
         this(context, null, 0);
@@ -40,6 +43,8 @@ public class DMActionBar extends FrameLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        dmMain = (FrameLayout) findViewById(R.id.dm_main);
+        titleContainer = (RelativeLayout) findViewById(R.id.dm_title_container);
         titleView = (TextView) findViewById(R.id.title);
         subTitleView = (TextView) findViewById(R.id.sub_title);
         customTitle = (FrameLayout) findViewById(R.id.custom_title);
@@ -49,6 +54,11 @@ public class DMActionBar extends FrameLayout {
         customBtn = (TextView) findViewById(R.id.custom_btn);
         setTitle("");
         setSubTitle("");
+    }
+
+
+    public void setMainBg(int resorce) {
+        dmMain.setBackgroundResource(resorce);
     }
 
     public void setTitle(String title) {
@@ -81,6 +91,10 @@ public class DMActionBar extends FrameLayout {
             subTitleView.setOnClickListener(listener);
             subTitleView.setClickable(listener != null);
         }
+    }
+
+    public void setLeftDisplay(boolean display) {
+        backBtn.setVisibility(display ? VISIBLE : GONE);
     }
 
     public void setLeftViewListener(OnClickListener listener) {

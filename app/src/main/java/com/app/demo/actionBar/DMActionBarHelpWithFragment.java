@@ -24,10 +24,12 @@ public class DMActionBarHelpWithFragment extends DMActionBarHelper {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         if (DMActionBarType.SHOW == mBaseActivity.getActionBarType()) {
+            //activity bar
             mDMActionBar = (DMActionBar) mBaseActivity.findViewById(R.id.demo_actionbar);
         } else if (DMActionBarType.DMCONTENT == mBaseActivity.getActionBarType()) {
 
         } else {
+            //fragment bar
             ViewStub stub = (ViewStub) mBaseFragment.getView().findViewById(R.id.dm_actionbar_stub);
             if (stub != null) {
                 stub.inflate();
@@ -47,7 +49,6 @@ public class DMActionBarHelpWithFragment extends DMActionBarHelper {
                 mBaseActivity.onBackPressed();
             }
         });
-
     }
 
     @Override

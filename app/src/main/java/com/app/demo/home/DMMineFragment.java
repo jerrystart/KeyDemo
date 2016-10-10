@@ -20,4 +20,5 @@ public class DMMineFragment extends BaseFragment {
     protected View onsetView(LayoutInflater inflater, ViewGroup container) {
         return inflater.inflate(R.layout.dm_mine_fragment, container, false);
     }
+
 }

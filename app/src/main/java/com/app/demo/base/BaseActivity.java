@@ -33,22 +33,10 @@ public abstract class BaseActivity extends FragmentActivity {
         dmActionBarHelper.onCreate(savedInstanceState);
         onSetConTentView();
         dmActionBarHelper.onSetView();
+        setTitle("");
+        updateActionBar();
         InjectUtils.inject(this);
         LogUtils.toast(this, getClass().getName());
-    }
-
-    @Override
-    public void setTitle(CharSequence title) {
-        super.setTitle(title);
-        if (dmActionBarHelper.getActionBar() != null) {
-            dmActionBarHelper.getActionBar().setTitle(title.toString());
-        }
-    }
-
-    public void setTitle(String title) {
-        if (dmActionBarHelper.getActionBar() != null) {
-            dmActionBarHelper.getActionBar().setTitle(title);
-        }
     }
 
     @Override
@@ -113,10 +101,19 @@ public abstract class BaseActivity extends FragmentActivity {
         LogUtils.e("BaseActivity>>>>onDestroy");
     }
 
+
     protected abstract void onSetConTentView();
 
     protected void setupView() {
 
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+        if (dmActionBarHelper.getActionBar() != null) {
+            dmActionBarHelper.getActionBar().setTitle(title.toString());
+        }
     }
 
     private void updateActionBar() {
@@ -131,17 +128,6 @@ public abstract class BaseActivity extends FragmentActivity {
 
     public DMActionBarHelper getDMActionbar() {
         return dmActionBarHelper;
-    }
-
-    protected void setDisPlayHashBar(boolean isShow) {
-        if (getDMActionbar() == null) {
-            return;
-        }
-        if (isShow) {
-            getDMActionbar().showActionBar();
-        } else {
-            getDMActionbar().hideActionBar();
-        }
     }
 
     protected void onCreateActionBar(DMActionBar dmActionBar) {

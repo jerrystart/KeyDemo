@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.app.demo.actionBar.DMActionBar;
 import com.app.demo.base.BaseFragment;
 import com.example.keydemo.R;
 
@@ -19,5 +20,14 @@ public class DMShopFrgament extends BaseFragment {
     @Override
     protected View onsetView(LayoutInflater inflater, ViewGroup container) {
         return inflater.inflate(R.layout.dm_shop_fragment, container, false);
+    }
+
+    @Override
+    protected void onCreateActionBar(DMActionBar dmActionBar) {
+        super.onCreateActionBar(dmActionBar);
+        displayActionbar(true);
+        dmActionBar.setLeftDisplay(false);
+        setTitle("shop");
+
     }
 }

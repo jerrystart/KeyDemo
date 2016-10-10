@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.app.demo.actionBar.DMActionBar;
 import com.app.demo.actionBar.DMActionBarHelper;
 import com.app.demo.annonation.InjectUtils;
 import com.app.demo.utils.LogUtils;
@@ -63,6 +64,8 @@ public abstract class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         dmActionBarHelper.onCreate(savedInstanceState);
         dmActionBarHelper.onSetView();
+        displayActionbar(false);
+        onCreateActionBar(dmActionBarHelper.getActionBar());
     }
 
     @Override
@@ -76,8 +79,23 @@ public abstract class BaseFragment extends Fragment {
         }
     }
 
-    public void isDisplayBar() {
-        dmActionBarHelper.hideActionBar();
+    protected void onCreateActionBar(DMActionBar dmActionBar) {
+
+    }
+
+
+    protected void displayActionbar(boolean hasActionBar) {
+        if (hasActionBar) {
+            dmActionBarHelper.showActionBar();
+        } else {
+            dmActionBarHelper.hideActionBar();
+        }
+    }
+
+    protected void setTitle(String title) {
+        if (dmActionBarHelper != null && dmActionBarHelper.getActionBar() != null) {
+            dmActionBarHelper.getActionBar().setTitle(title);
+        }
     }
 
     protected abstract View onsetView(LayoutInflater inflater, ViewGroup container);

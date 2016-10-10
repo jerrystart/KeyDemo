@@ -18,8 +18,9 @@ public class HttpUtills {
     static HttpURLConnection httpURLConnection = null;
     static InputStream inputStream;
     static String result;
+    static int code = -1;
 
-    public static String getMothed(String url) {
+    public static String postMethod(String url) {
         try {
             URL mUrl = new URL(url);
             httpURLConnection = (HttpURLConnection) mUrl.openConnection();
@@ -51,5 +52,8 @@ public class HttpUtills {
             }
         }
         return result;
+    }
+
+    public static void getMethod() {
     }
 }

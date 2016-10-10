@@ -23,7 +23,7 @@ public class AsyncTaskUtills extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] params) {
-        return HttpUtills.getMothed(params[0].toString());
+        return HttpUtills.postMethod(params[0].toString());
     }
 
     @Override

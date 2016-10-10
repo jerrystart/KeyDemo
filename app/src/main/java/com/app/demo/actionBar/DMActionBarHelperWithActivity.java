@@ -23,7 +23,8 @@ public class DMActionBarHelperWithActivity extends DMActionBarHelper {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        if (mBaseActivity.getActionBarType() == DMActionBarType.SHOW || mBaseActivity.getActionBarType() == DMActionBarType.DMCONTENT) {
+        if (mBaseActivity.getActionBarType() == DMActionBarType.SHOW) {
+            //activitybar
             mBaseActivity.getWindow().requestFeature(Window.FEATURE_CUSTOM_TITLE);
             mBaseActivity.setContentView(new ViewStub(mBaseActivity));
             mBaseActivity.getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.dm_actionbar);
@@ -46,7 +47,6 @@ public class DMActionBarHelperWithActivity extends DMActionBarHelper {
                 mBaseActivity.onBackPressed();
             }
         });
-        mBaseActivity.setTitle(mBaseActivity.getTitle());
     }
 
     @Override
