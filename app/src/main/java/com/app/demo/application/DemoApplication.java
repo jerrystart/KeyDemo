@@ -30,6 +30,7 @@ public class DemoApplication extends Application {
         //应用创建的时候调用
         super.onCreate();
         if ((getApplicationInfo().flags & 2) != 0) {
+
             // ApplicationInfo.FLAG_DEBUGGABLE
             LogUtils.LEVEL = Integer.MIN_VALUE;
         } else {
