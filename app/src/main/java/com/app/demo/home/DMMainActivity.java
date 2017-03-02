@@ -26,8 +26,9 @@ public class DMMainActivity extends BaseActivity {
 
     @Override
     protected void onSetConTentView() {
+        //1透明状态栏 2透明导航栏
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         setContentView(R.layout.dm_main_activity);
     }
 
